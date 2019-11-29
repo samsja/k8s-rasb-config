@@ -14,12 +14,12 @@ unzip raspbian_lite_latest.zip
 
 * find the place of the sd card ( ex /dev/sda)
 ```shell
-export CHEMIN_CARTE_SD="/dev/sda"
+export PATH_CARD_SD="/dev/sda"
 ```
 * flash card
 
 ```shell
-sudo dd bs=1M if=2019-09-26-raspbian-buster-lite.img of=$CHEMIN_CARTE_SD status=progress conv=fsync
+sudo dd bs=1M if=2019-09-26-raspbian-buster-lite.img of=$PATH_CARD_SD status=progress conv=fsync
 ```
 
 * mount boot partition and
@@ -42,4 +42,30 @@ ssh pi@RASP_IP
 the init password is `raspberry`
 
 
-* then change the password
+* then change the root password
+
+```shell
+passwd
+```
+* update system and repo
+```shell
+sudo apt-get update && sudo apt-get upgrade
+```
+
+### install zsh ( and git)
+
+```shell
+sudo apt-get install git zsh
+```
+
+* making it default
+
+```shell
+sudo chsh -s /bin/zsh
+```
+
+* install oh_my_zsh
+
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
