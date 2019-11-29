@@ -30,3 +30,16 @@ touch ssh
 ```
 
 ## 2 - install on raspberry
+
+
+* first connect to raspberry via ssh
+
+```shell
+nmap -sP 192.168.1.1/24
+ssh pi@RASP_IP
+```
+
+the init password is `raspberry`
+
+
+* then change the password
