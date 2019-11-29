@@ -52,6 +52,14 @@ passwd
 sudo apt-get update && sudo apt-get upgrade
 ```
 
+change the hostname :
+
+edit :
+ - /etc/hostname
+ - /etc/hosts
+
+ and replace raspbery pi with the new hostname
+
 ### install zsh ( and git)
 
 ```shell
@@ -94,5 +102,9 @@ sudo bash -c $'echo "neofetch" >> /etc/update-motd.d/05-neofetch '
 
 and finaly add custom ascii art
 
-edit .zshrc and add alias:
-`alias neofetch='neofetch --source /home/pi/other/pictures/salameche.txt' `
+```shell
+sudo nano /.config/neofetch/config.conf
+```
+
+edit ~/.config/neofetch/config.conf gand add alias:
+`image_source="/home/pi/other/pictures/salameche.txt" `
