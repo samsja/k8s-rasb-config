@@ -84,3 +84,13 @@ and
 ```shell
 source .zshrc
 ```
+
+### customize the logging menu
+
+```shell
+sudo apt-get install neofetch -y
+```
+
+```shell
+sudo bash -c $'echo "neofetch" >> /etc/update-motd.d/05-neofetch '
+```

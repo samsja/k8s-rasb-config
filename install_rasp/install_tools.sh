@@ -6,3 +6,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 cd /home/pi/.oh-my-zsh/custom/themes
 curl -fsSL https://raw.githubusercontent.com/halfo/lambda-mod-zsh-theme/master/lambda-mod.zsh-theme > lambda-mod.zsh-theme
 cd /home/pi
+
+
+sudo apt-get install neofetch -y
+sudo bash -c $'echo "neofetch" >> /etc/update-motd.d/05-neofetch '
