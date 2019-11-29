@@ -69,3 +69,18 @@ sudo chsh -s /bin/zsh
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+
+and add lambda mod theme
+
+```shell
+cd /home/pi/.oh-my-zsh/custom/themes
+curl -fsSL https://raw.githubusercontent.com/halfo/lambda-mod-zsh-theme/master/lambda-mod.zsh-theme > lambda-mod.zsh-theme
+```
+
+then change theme in .zshrc
+
+and
+
+```shell
+source .zshrc
+```
