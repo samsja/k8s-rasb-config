@@ -91,3 +91,8 @@ source .zshrc
 sudo apt-get install neofetch -y
 sudo bash -c $'echo "neofetch" >> /etc/update-motd.d/05-neofetch '
 ```
+
+and finaly add custom ascii art
+
+edit .zshrc and add alias:
+`alias neofetch='neofetch --source /home/pi/other/pictures/salameche.txt' `
