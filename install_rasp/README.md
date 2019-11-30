@@ -1,6 +1,6 @@
 # setting up an master or worker raspberry
 
-## 1 - writing images on sd
+##  writing images on sd
 
  [raspbian_lite_latest]: https://raspberry-pi.fr/download/raspbian_lite_latest.zip
 
@@ -25,11 +25,11 @@ sudo dd bs=1M if=2019-09-26-raspbian-buster-lite.img of=$PATH_CARD_SD status=pro
 * mount boot partition and
 
 ```shell
-cd /mount/$USER/boot
+cd /media/$USER/boot
 touch ssh
 ```
 
-## 2 - install on raspberry
+##  install on raspberry
 
 
 * first connect to raspberry via ssh
