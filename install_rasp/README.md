@@ -85,7 +85,8 @@ cd /home/pi/.oh-my-zsh/custom/themes
 curl -fsSL https://raw.githubusercontent.com/halfo/lambda-mod-zsh-theme/master/lambda-mod.zsh-theme > lambda-mod.zsh-theme
 ```
 
-then change theme in .zshrc
+then change theme in .zshrc :
+ ``
 
 and
 
