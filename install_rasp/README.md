@@ -99,7 +99,10 @@ source .zshrc
 ```shell
 sudo apt-get install neofetch -y
 sudo bash -c $'echo "neofetch" >> /etc/update-motd.d/05-neofetch '
+sudo chmod +x /etc/update-motd.d/05-neofetch
 ```
+
+and add #!/bin/sh at the begining of 05-neofetch
 
 and finaly add custom ascii art
 
