@@ -98,7 +98,8 @@ source .zshrc
 
 ```shell
 sudo apt-get install neofetch -y
-sudo bash -c $'echo "neofetch" >> /etc/update-motd.d/05-neofetch '
+sudo bash -c $'echo "#!/bin/sh
+ \n neofetch --source /home/pi/other/pictures/salameche.txt" >> /etc/update-motd.d/05-neofetch '
 sudo chmod +x /etc/update-motd.d/05-neofetch
 ```
 
