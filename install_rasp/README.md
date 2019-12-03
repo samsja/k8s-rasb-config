@@ -60,6 +60,12 @@ edit :
 
  and replace raspbery pi with the new hostname
 
+* configure public_key authentification:
+
+```yaml
+ssh-copy-id pi@HOSTNAME
+```
+
 ### install zsh ( and git)
 
 ```shell
