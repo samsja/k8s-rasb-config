@@ -1,2 +1,4 @@
 install_rasp/secret.yaml filter=git-crypt diff=git-crypt
+install_k3s/kubeconfig filter=git-crypt diff=git-crypt
+
 .gitattributes !filter !diff
