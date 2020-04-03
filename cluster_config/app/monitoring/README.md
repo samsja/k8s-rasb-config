@@ -2,6 +2,16 @@
 
 ## k8s dashboard
 
+
+
+```shell
+arkade install kubernetes-dashboard
+```
+
+
+
+
+(deprecated)
 ```shell
 helm install --name=k3s-dash --namespace=kube-system stable/kubernetes-dashboard -f values.yaml
 ```
