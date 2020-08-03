@@ -6,6 +6,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "traefik"
     traefik.frontend.rule.type: PathPrefixStrip
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+
 spec:
   rules:
   - http:
@@ -14,10 +16,10 @@ spec:
         backend:
           serviceName: home-website-service
           servicePort: 80
-  # - host: hw2.kub # by host header
-  #   http:
-  #     paths:
-  #     - path: /
-  #       backend:
-  #         serviceName: home-website-service
-  #         servicePort: 80
+  - host: home.samsja.fr # by host header
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: home-website-service
+          servicePort: 80

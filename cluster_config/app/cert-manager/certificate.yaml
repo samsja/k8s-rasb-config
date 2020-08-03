@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: prod-samsja-cloud
+spec:
+  secretName: prod-samsja-cloud-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+  - samsja.fr
+  - '*.samsja.fr'
