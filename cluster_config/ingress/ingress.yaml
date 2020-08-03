@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: main-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.frontend.rule.type: PathPrefixStrip
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /home # by path
+        backend:
+          serviceName: home-website-service
+          servicePort: 80
+  # - host: hw2.kub # by host header
+  #   http:
+  #     paths:
+  #     - path: /
+  #       backend:
+  #         serviceName: home-website-service
+  #         servicePort: 80
