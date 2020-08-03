@@ -23,3 +23,9 @@ spec:
         backend:
           serviceName: home-website-service
           servicePort: 80
+
+
+  tls:
+  - hosts:
+    - home.samsja.fr
+    secretName: letsencrypt-prod
