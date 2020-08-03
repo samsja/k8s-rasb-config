@@ -2,21 +2,19 @@
 
 ## k8s dashboard
 
+```shell
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+```
+
+
+```shell
+helm install --namespace monitoring k3s-dashboard kubernetes-dashboard/kubernetes-dashboard  -f k8s_dashboard/values.yaml
+```
+
+
+(deprecated)
 
 
 ```shell
 arkade install kubernetes-dashboard
-```
-
-
-
-
-(deprecated)
-```shell
-helm install --name=k3s-dash --namespace=kube-system stable/kubernetes-dashboard -f values.yaml
-```
-* token d'authenfication
-
-```shell
-kb describe -n kube-system secrets k3s-dash-kubernetes-dashboard-token-4kp87
 ```

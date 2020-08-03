@@ -1,6 +1,20 @@
 # *CLUSTER CONFIG*
 
-## 1. Install helm/tiller (arm):
+
+## Connect to Dockerhub
+
+```shell
+docker login
+```
+
+```shell
+kubectl create secret generic regcred \                                                      [336b237]
+    --from-file=.dockerconfigjson=$HOME.docker/config.json \
+    --type=kubernetes.io/dockerconfigjson
+
+```
+
+##  Install helm/tiller (arm):
 
 * create tiller service serviceaccount
 
