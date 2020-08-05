@@ -1,11 +1,11 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: prod-samsja-cloud
+  name: staging-samsja-cloud
 spec:
-  secretName: prod-samsja-cloud-tls
+  secretName: staging-samsja-cloud-tls
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt-staging
     kind: ClusterIssuer
   dnsNames:
   - samsja.fr
