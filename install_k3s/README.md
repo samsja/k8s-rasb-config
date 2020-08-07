@@ -19,7 +19,16 @@ cp ~/.kube/config ~/.kube/old_config
 KUBECONFIG=~/.kube/config:~/someotherconfig
 kubectl config view --flatten > ~/.kube/configs
 ```
+
+
 ## when restart to avoid NotReady status:
+
+```shell
+sudo systemctl enable k3s
+```
+
+
+if not working
 
 ```shell
 sudo systemctl restart k3s
