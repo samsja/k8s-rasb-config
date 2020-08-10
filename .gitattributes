@@ -5,4 +5,6 @@ k8s-rasb-config/cluster_config/app/cert-manager/tls.crt diff=git-crypt
 k8s-rasb-config/cluster_config/app/cert-manager/tls.key diff=git-crypt
 
 
+k8s-rasb-config/cluster_config/app/keycloak/values-secret.yaml diff=git-crypt
+
 .gitattributes !filter !diff

@@ -21,6 +21,12 @@ and create the pg_database
 CREATE DATABASE keycloak;
 ```
 
+## helm installation
+
 ```shell
-helm install --name keycloak -f k8s/keycloak/<b>$ENVIRONMENT</b>/values.yaml --namespace default  stable/keycloak
+helm repo add codecentric https://codecentric.github.io/helm-charts
+```
+
+```shell
+helm install keycloak codecentric/keycloak -f values.yaml
 ```
