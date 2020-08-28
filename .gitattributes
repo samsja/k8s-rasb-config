@@ -4,6 +4,8 @@ install_k3s/kubeconfig filter=git-crypt diff=git-crypt
 k8s-rasb-config/cluster_config/app/cert-manager/tls.crt diff=git-crypt
 k8s-rasb-config/cluster_config/app/cert-manager/tls.key diff=git-crypt
 
+k8s-rasb-config/cluster_config/app/nextcloud/secret-values.yaml diff=git-crypt
+
 
 k8s-rasb-config/cluster_config/app/keycloak/values-secret.yaml diff=git-crypt
 

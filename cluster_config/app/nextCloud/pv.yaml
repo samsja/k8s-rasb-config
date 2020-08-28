@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "nextcloud-hdd"
+  namespace: nextcloud
+  labels:
+    type: "local"
+spec:
+  storageClassName: "manual"
+  capacity:
+    storage: "1200Gi"
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/hd1/nextcloud"
