@@ -28,5 +28,5 @@ helm repo add codecentric https://codecentric.github.io/helm-charts
 ```
 
 ```shell
-helm install keycloak codecentric/keycloak -f values.yaml
+helm install keycloak codecentric/keycloak --namespace keycloak -f values.yaml -f values-secret.yaml
 ```
