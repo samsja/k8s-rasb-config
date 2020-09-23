@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: samsja-cloud-staging-certificate
+spec:
+  secretName: samsja-cloud-staging-tls
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  dnsNames:
+  # - '*.samsja.fr'
+  - home.samsja.fr

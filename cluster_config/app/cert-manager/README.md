@@ -10,8 +10,13 @@ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/relea
 ```shell
 helm repo add jetstack https://charts.jetstack.io && helm repo update
 ```
+
+```
+kubectl create namespace cert-manager
+```
+
 ```shell
-helm install cert-manager jetstack/cert-manager --namespace kube-system   --set installCRDs=true --version v0.16.0
+helm install cert-manager jetstack/cert-manager --namespace cert-manager   --set installCRDs=true --version v1.0.1
 ```
 
 ```shell

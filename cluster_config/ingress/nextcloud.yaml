@@ -1,17 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  namespace: "nextcloud" # Same namespace as the deployment
-  name: "nextcloud-ingress" # Name of the ingress (see kubectl get ingress -A)
+  namespace: nextcloud
+  name: nextcloud-ingress
   annotations:
     kubernetes.io/ingress.class: "traefik"
     traefik.frontend.rule.type: PathPrefixStrip
     cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
-  # tls:
-  # - hosts:
-  #   - "nextcloud.samsja.fr" # Host to access nextcloud
-  #   secretName: "nextcloud-staging-tls" # Name of the certifciate (see kubectl get certificate -A)
+
   rules:
   - host: "nextcloud.samsja.fr" # Host to access nextcloud
     http:
@@ -20,3 +17,7 @@ spec:
           backend:
             serviceName: "nextcloud" # Mapping to the service (see kubectl get services -n nextcloud)
             servicePort: 8080 # Mapping to the port (see kubectl get services -n nextcloud)
+  tls:
+  - hosts:
+    - "nextcloud.samsja.fr" # Host to access nextcloud
+    secretName: "nextcloud-staging-tls" # Name of the certifciate (see kubectl get certificate -A)

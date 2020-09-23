@@ -1,7 +1,8 @@
-FROM dordoka/rpi-java8
+FROM ubuntu:latest
 
+# https://github.com/jboss-dockerfiles/keycloak/tree/master/server/tools
 
-ENV KEYCLOAK_VERSION 11.0.0
+ENV KEYCLOAK_VERSION 11.0.1
 ENV JDBC_POSTGRES_VERSION 42.2.5
 ENV JDBC_MYSQL_VERSION 8.0.19
 ENV JDBC_MARIADB_VERSION 2.5.4
@@ -18,7 +19,9 @@ ARG KEYCLOAK_DIST=https://downloads.jboss.org/keycloak/$KEYCLOAK_VERSION/keycloa
 
 USER root
 
-RUN apt-get update && apt-get install -y oracle-java8-installer glibc-langpack-en gzip hostname  openssl tar which
+RUN apt update
+RUN apt --assume-yes install curl gzip hostname openssl tar
+RUN apt --assume-yes install openjdk-11-jdk-headless
 
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh

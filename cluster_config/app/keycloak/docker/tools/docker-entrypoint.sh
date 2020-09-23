@@ -104,6 +104,9 @@ if echo "$@" | grep -E -v -- '-c |-c=|--server-config |--server-config='; then
     SYS_PROPS+=" -c=standalone-ha.xml"
 fi
 
+# Adding support for JAVA_OPTS_APPEND
+sed -i '$a\\n# Append to JAVA_OPTS. Necessary to prevent some values being omitted if JAVA_OPTS is defined directly\nJAVA_OPTS=\"\$JAVA_OPTS \$JAVA_OPTS_APPEND\"' /opt/jboss/keycloak/bin/standalone.conf
+
 ############
 # DB setup #
 ############
@@ -189,8 +192,13 @@ case "$DB_VENDOR" in
         exit 1
 esac
 
-# Append '?' in the beggining of the string if JDBC_PARAMS value isn't empty
-JDBC_PARAMS=$(echo "${JDBC_PARAMS:-}" | sed '/^$/! s/^/?/')
+if [ "$DB_VENDOR" != "mssql" ]; then
+    # Append '?' in the beginning of the string if JDBC_PARAMS value isn't empty
+    JDBC_PARAMS=$(echo "${JDBC_PARAMS:-}" | sed '/^$/! s/^/?/')
+else
+    JDBC_PARAMS=${JDBC_PARAMS:-}
+fi
+
 export JDBC_PARAMS
 
 # Convert deprecated DB specific variables
@@ -215,16 +223,20 @@ echo ""
 echo "========================================================================="
 echo ""
 
-if [ "$DB_VENDOR" != "h2" ]; then
-    /bin/sh /opt/jboss/tools/databases/change-database.sh $DB_VENDOR
-fi
+configured_file="/opt/jboss/configured"
+if [ ! -e "$configured_file" ]; then
+    touch "$configured_file"
 
-/opt/jboss/tools/x509.sh
-/opt/jboss/tools/jgroups.sh
-/opt/jboss/tools/infinispan.sh
-/opt/jboss/tools/statistics.sh
-/opt/jboss/tools/autorun.sh
-/opt/jboss/tools/vault.sh
+    if [ "$DB_VENDOR" != "h2" ]; then
+        /bin/sh /opt/jboss/tools/databases/change-database.sh $DB_VENDOR
+    fi
+    /opt/jboss/tools/x509.sh
+    /opt/jboss/tools/jgroups.sh
+    /opt/jboss/tools/infinispan.sh
+    /opt/jboss/tools/statistics.sh
+    /opt/jboss/tools/autorun.sh
+    /opt/jboss/tools/vault.sh
+fi
 
 ##################
 # Start Keycloak #
