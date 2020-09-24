@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: keycloak
+  name: keycloak-ingress
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.frontend.rule.type: PathPrefixStrip
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+
+  rules:
+  - host: "keycloak.samsja.fr"
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: keycloak-http
+            servicePort: 80
+  # tls:
+  # - hosts:
+  #   - "keycloak.samsja.fr" # Host to access keycloak
+  #   secretName: "keycloak-staging-tls" # Name of the certifciate (see kubectl get certificate -A)
