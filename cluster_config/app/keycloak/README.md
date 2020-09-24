@@ -1,6 +1,16 @@
 # Keycloak
 
 
+## build the docker image
+to be able to build arm image from x86:
+```
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+```
+then build the docker image
+```
+docker build -t samsja/keycloak:arm-11.0.1 .
+```
+
 ## Create a pg_database
 
 

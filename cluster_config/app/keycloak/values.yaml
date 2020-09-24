@@ -9,9 +9,9 @@ replicas: 1
 
 image:
   # The Keycloak image repository
-  repository: samsja/keycloak
+  repository: mihaibob/keycloak
   # Overrides the Keycloak image tag whose default is the chart version
-  tag: arm-11.0.1
+  tag: 11.0.1
   # The Keycloak image pull policy
   pullPolicy: IfNotPresent
 

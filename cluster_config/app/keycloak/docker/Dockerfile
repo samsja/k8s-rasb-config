@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM arm32v7/ubuntu:latest
 
 # https://github.com/jboss-dockerfiles/keycloak/tree/master/server/tools
 
