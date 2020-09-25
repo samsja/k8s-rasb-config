@@ -20,4 +20,4 @@ spec:
   tls:
   - hosts:
     - "nextcloud.samsja.fr" # Host to access nextcloud
-    secretName: "nextcloud-staging-tls" # Name of the certifciate (see kubectl get certificate -A)
+    secretName: "samsja-cloud-tls" # Name of the certifciate (see kubectl get certificate -A)

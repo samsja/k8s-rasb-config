@@ -17,6 +17,7 @@ replicaCount: 1
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##
+
 ingress:
   enabled: false
   annotations: {}
