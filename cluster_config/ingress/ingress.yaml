@@ -6,7 +6,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "traefik"
     traefik.frontend.rule.type: PathPrefixStrip
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/cluster-issuer: "selfsigned-issuer"
+    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   rules:
   - http:
@@ -22,7 +23,7 @@ spec:
         backend:
           serviceName: home-website-service
           servicePort: 80
-  # tls:
-  # - hosts:
-  #   - home.samsja.fr
-  #   secretName: samsja-cloud-staging-certificate-2vnqq
+  tls:
+  - hosts:
+    - home.samsja.fr
+    secretName: samsja-cloud-staging-certificate-2vnqq

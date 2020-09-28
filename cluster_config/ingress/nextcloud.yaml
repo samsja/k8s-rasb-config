@@ -6,7 +6,9 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "traefik"
     traefik.frontend.rule.type: PathPrefixStrip
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/cluster-issuer: "selfsigned-issuer"
+
 spec:
 
   rules:
@@ -17,7 +19,7 @@ spec:
           backend:
             serviceName: "nextcloud" # Mapping to the service (see kubectl get services -n nextcloud)
             servicePort: 8080 # Mapping to the port (see kubectl get services -n nextcloud)
-  # tls:
-  # - hosts:
-  #   - "nextcloud.samsja.fr" # Host to access nextcloud
-  #   secretName: "samsja-cloud-tls" # Name of the certifciate (see kubectl get certificate -A)
+  tls:
+  - hosts:
+    - "nextcloud.samsja.fr" # Host to access nextcloud
+    secretName: "samsja-cloud-tls" # Name of the certifciate (see kubectl get certificate -A)

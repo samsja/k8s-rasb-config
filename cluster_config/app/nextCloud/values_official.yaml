@@ -17,7 +17,6 @@ replicaCount: 1
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##
-
 ingress:
   enabled: false
   annotations: {}
@@ -62,7 +61,9 @@ lifecycle: {}
   # preStopCommand: []
 
 nextcloud:
+  host: nextcloud.kube.home
   username: admin
+  password: changeme
   update: 0
   datadir: /var/www/html/data
   tableprefix:
@@ -281,7 +282,7 @@ service:
 ##
 persistence:
   # Nextcloud Data (/var/www/html)
-  enabled: true
+  enabled: false
   annotations: {}
   ## nextcloud data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
@@ -295,10 +296,10 @@ persistence:
   ## A manually managed Persistent Volume and Claim
   ## Requires persistence.enabled: true
   ## If defined, PVC must be created manually before volume will be bound
-  existingClaim: "nextcloud-hdd"
-  accessMode: ReadWriteOnce
-  size: "1190i"
+  # existingClaim:
 
+  accessMode: ReadWriteOnce
+  size: 8Gi
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
