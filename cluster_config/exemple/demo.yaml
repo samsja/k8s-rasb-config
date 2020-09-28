@@ -1,20 +1,25 @@
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
-  namespace: default
+  name: demo-ubuntu-deployment
+  labels:
+    app: demo-ubuntu
 spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
   selector:
     matchLabels:
-      app: nginx
-  replicas: 1 
+      app: demo-ubuntu
   template:
     metadata:
       labels:
-        app: nginx
+        app: demo-ubuntu
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
-        ports:
-        - containerPort: 80
+      - name: demo-ubuntu
+        image: ubuntu
+        imagePullPolicy: IfNotPresent
+
+        command: ['sh', '-c', 'echo Container 1 is Running ; sleep 3600']
