@@ -119,3 +119,19 @@ sudo nano /.config/neofetch/config.conf
 
 edit ~/.config/neofetch/config.conf gand add alias:
 `image_source="/home/pi/other/pictures/salameche.txt" `
+
+
+# configure dns intern
+
+```
+sudo apt-get install dnsmasq
+```
+
+
+
+update /etc/dnsmaqs.conf
+update /etc/hosts
+
+```
+sudo systemctl restart dnsmasq  
+```
