@@ -15,8 +15,8 @@ This project is the configuration files of my home based self hosted Cloud : **s
 
  WIP :
 
- * (Jitsi)[https://meet.jit.si/] as a zoom alternative
- * (Mattermost)[https://meet.jit.si/] as a slack alternative
+ * [Jitsi](https://meet.jit.si/) as a zoom alternative
+*  [Mattermost](https://meet.jit.si/) as a slack alternative
  * gitlab
  * container registery
 
