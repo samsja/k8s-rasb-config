@@ -123,15 +123,19 @@ edit ~/.config/neofetch/config.conf gand add alias:
 
 # configure dns intern
 
+on the salameche (master) machine
+
 ```
 sudo apt-get install dnsmasq
 ```
 
 
-
-update /etc/dnsmaqs.conf
-update /etc/hosts
+update /etc/dnsmaqs.conf with the one in the repo ( with the good ip and domain)
 
 ```
 sudo systemctl restart dnsmasq  
 ```
+
+on the arcko (slave) machine,
+
+update /etc/resolv.conf to point to the master ip
