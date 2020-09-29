@@ -3,7 +3,7 @@
 ##
 image:
   repository: nextcloud
-  tag: 17.0.0-apache
+  tag: 19.0.3-apache
   pullPolicy: IfNotPresent
   # pullSecrets:
   #   - myRegistrKeySecretName
@@ -17,7 +17,6 @@ replicaCount: 1
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##
-
 ingress:
   enabled: false
   annotations: {}
@@ -62,6 +61,7 @@ lifecycle: {}
   # preStopCommand: []
 
 nextcloud:
+  host: nextcloud.samsja.fr
   username: admin
   update: 0
   datadir: /var/www/html/data
@@ -179,19 +179,16 @@ internalDatabase:
 ## External database configuration
 ##
 externalDatabase:
-  enabled: false
+  enabled: true
 
   ## Supported database engines: mysql or postgresql
-  type: mysql
+  type: postgresql
 
   ## Database host
   host:
 
   ## Database user
   user: nextcloud
-
-  ## Database password
-  password:
 
   ## Database name
   database: nextcloud
@@ -215,20 +212,36 @@ mariadb:
     user: nextcloud
     password: changeme
 
+  replication:
+    enabled: false
+
   ## Enable persistence using Persistent Volume Claims
   ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
   ##
+  master:
+    persistence:
+      enabled: false
+      # storageClass: ""
+      accessMode: ReadWriteOnce
+      size: 8Gi
+
+postgresql:
+  enabled: false
+  global:
+    postgresql:
+      postgresqlUsername: nextcloud
+      postgresqlPassword: changeme
+      postgresqlDatabase: nextcloud
   persistence:
     enabled: false
-    accessMode: ReadWriteOnce
-    size: 8Gi
+    # storageClass: ""
 
 redis:
   enabled: false
   usePassword: false
 
 ## Cronjob to execute Nextcloud background tasks
-## ref: https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html#cron-jobs
+## ref: https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html#webcron
 ##
 cronjob:
   enabled: false
@@ -239,10 +252,10 @@ cronjob:
     # pullPolicy: IfNotPresent
     # pullSecrets:
     #   - myRegistrKeySecretName
-  # Every 15 minutes
-  # Note: Setting this to any any other value than 15 minutes might
+  # Every 5 minutes
+  # Note: Setting this to any any other value than 5 minutes might
   #  cause issues with how nextcloud background jobs are executed
-  schedule: "*/15 * * * *"
+  schedule: "*/5 * * * *"
   annotations: {}
   # Set curl's insecure option if you use e.g. self-signed certificates
   curlInsecure: false
@@ -281,24 +294,10 @@ service:
 ##
 persistence:
   # Nextcloud Data (/var/www/html)
-  enabled: true
-  annotations: {}
-  ## nextcloud data Persistent Volume Storage Class
-  ## If defined, storageClassName: <storageClass>
-  ## If set to "-", storageClassName: "", which disables dynamic provisioning
-  ## If undefined (the default) or set to null, no storageClassName spec is
-  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack)
-  ##
-  # storageClass: "-"
-
-  ## A manually managed Persistent Volume and Claim
-  ## Requires persistence.enabled: true
-  ## If defined, PVC must be created manually before volume will be bound
-  existingClaim: "nextcloud-hdd"
+  enabled: true # Change to true
+  existingClaim: nextcloud-hdd # Persistent Volume Claim created earlier
   accessMode: ReadWriteOnce
-  size: "1190i"
-
+  size: "1189Gi"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
