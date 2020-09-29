@@ -6,8 +6,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "traefik"
     traefik.frontend.rule.type: PathPrefixStrip
-    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-    cert-manager.io/cluster-issuer: "selfsigned-issuer"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 
 spec:
 
@@ -22,4 +21,4 @@ spec:
   tls:
   - hosts:
     - "keycloak.samsja.fr" # Host to access keycloak
-    secretName: "keycloak-staging-tls" # Name of the certifciate (see kubectl get certificate -A)
+    secretName: "samsja-cloud-tls" # Name of the certifciate (see kubectl get certificate -A)
