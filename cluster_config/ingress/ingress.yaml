@@ -13,7 +13,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /home # by path
+      - path: /alive # by path
         backend:
           serviceName: home-website-service
           servicePort: 80
@@ -22,7 +22,7 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: home-website-service
+          serviceName: homer
           servicePort: 80
   tls:
   - hosts:
