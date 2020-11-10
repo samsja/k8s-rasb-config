@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: belote
+  name: belote-ingress
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.frontend.rule.type: PathPrefixStrip
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+
+
+spec:
+
+  rules:
+  - host: "belote-api.samsja.fr"
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: belote-api-service
+            servicePort: 80
+
+  - host: "belote-libre.samsja.fr"
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: belote-front-service
+            servicePort: 80
+  # tls:
+  # - hosts:
+  #   - "belote-api.samsja.fr" # Host to access keycloak
+  #   secretName: "samsja-cloud-tls" # Name of the certifciate (see kubectl get certificate -A)
+  #
+  # - hosts:
+  #   - "belote-libre.samsja.fr" # Host to access keycloak
+  #   secretName: "samsja-cloud-tls" # Name of the certifciate (see kubectl get certificate -A)
