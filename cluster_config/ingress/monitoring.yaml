@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: monitoring
+  name: monitoring-ingress
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.frontend.rule.type: PathPrefixStrip
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+
+spec:
+
+  rules:
+  - host: k8s-dash.samsja.fr # Host to access monitoring
+    http:
+      paths:
+        - path: /  # We will access monitoring via the URL https://monitoring.<domain.com>/
+          backend:
+            serviceName: k3s-dashboard-kubernetes-dashboard # Mapping to the service (see kubectl get services -n monitoring)
+            servicePort: 80 # Mapping to the port (see kubectl get services -n monitoring)
+  tls:
+  - hosts:
+    - "k8s-dash.samsja.fr" # Host to access monitoring
+    secretName: "samsja-cloud-tls" # Name of the certifciate (see kubectl get certificate -A)

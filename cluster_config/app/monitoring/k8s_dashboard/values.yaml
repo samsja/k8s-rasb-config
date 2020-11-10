@@ -19,7 +19,7 @@
 
 image:
   repository: kubernetesui/dashboard
-  tag: v2.0.3
+  tag: v2.0.4
   pullPolicy: IfNotPresent
   pullSecrets: []
 
@@ -34,7 +34,7 @@ labels: {}
 ##
 extraArgs:
 #   - --enable-skip-login
-   - --enable-insecure-login
+#   - --enable-insecure-login
 #   - --system-banner="Welcome to Kubernetes"
 
 ## Additional container environment variables
@@ -83,7 +83,7 @@ protocolHttp: false
 
 service:
   type: ClusterIP
-  externalPort: 443
+  externalPort: 80
 
   # LoadBalancerSourcesRange is a list of allowed CIDR values, which are combined with ServicePort to
   # set allowed inbound rules on the security group assigned to the master load balancer
